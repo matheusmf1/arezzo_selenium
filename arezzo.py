@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 
-driver = webdriver.Chrome(executable_path=r"/Users/matheusmandotti/Documents/Programming/selenium/driver/chromedriver")
+driver = webdriver.Chrome(executable_path=r"/Users/matheus/Documents/Programming/selenium/driver/chromedriver")
 
 driver.get("https://www.arezzo.com.br/storesale/login")
 
@@ -43,7 +43,7 @@ while( test ):
 		try:
 			
 			# driver.implicitly_wait(2)
-			sleep(1)
+			sleep(0.7)
 
 			btnModal = driver.find_element_by_class_name("sts-buttons")
 			print('BtnModal')

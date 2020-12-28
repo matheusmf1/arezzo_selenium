@@ -6,25 +6,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 
-def login( driver ):
-	driver.find_element_by_name("j_username").send_keys("303254_abc@loja.com")
-	driver.find_element_by_name("j_password").send_keys("arezzo123")
-	driver.find_element_by_name("j_password").send_keys( Keys.RETURN )
-
-
 def lookForNewElements( driver ):
 	test = True
 	while( test ):
 
 		parentElement = driver.find_elements_by_class_name("sts-grid-body")[0]
-		# print( 'ParentElement: ')
-		# print('Text ' +  parentElement.text )
-		# print( 'Tag ' + parentElement.tag_name )
-		# print( 'parent: ')
-		# print( parentElement.parent )
 		
 		try:
-
 		
 			firstItem = parentElement.find_element_by_class_name('sts-label-icon-checked')
 		
@@ -42,7 +30,7 @@ def lookForNewElements( driver ):
 			try:
 				
 				# driver.implicitly_wait(2)
-				sleep(1)
+				sleep(0.7)
 
 				btnModal = driver.find_element_by_class_name("sts-buttons")
 				print('BtnModal')
@@ -58,7 +46,6 @@ def lookForNewElements( driver ):
 				print("Deu ruim")
 				print(e)
 
-		
 			test = False
 
 
@@ -69,13 +56,18 @@ def lookForNewElements( driver ):
 			driver.refresh()
 
 	print("Saiu do loop")
+	sleep(2)
 	openNewWindow()
 
 
 def openNewWindow():
-	driver = webdriver.Chrome(executable_path=r"/Users/matheusmandotti/Documents/Programming/selenium/driver/chromedriver")
+	driver = webdriver.Chrome(executable_path=r"/Users/matheus/Documents/Programming/selenium/driver/chromedriver")
 	driver.get("https://www.arezzo.com.br/storesale/login")
-	login( driver )
+
+	driver.find_element_by_name("j_username").send_keys("303254_abc@loja.com")
+	driver.find_element_by_name("j_password").send_keys("arezzo123")
+	driver.find_element_by_name("j_password").send_keys( Keys.RETURN )
+	
 	lookForNewElements( driver )
 
 
